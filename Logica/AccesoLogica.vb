@@ -4022,6 +4022,18 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
 
         Return _Tabla
     End Function
+
+    Public Shared Function L_fnListarPlantillas() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 8))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_go_TS002", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_fnListarAlmacenQueTenganDosificacion() As DataTable
         Dim _Tabla As DataTable
 
@@ -5830,16 +5842,44 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
 
         Return _Tabla
     End Function
-    Public Shared Function L_prServicioListarCuentas() As DataTable
+    Public Shared Function L_prServicioListarCuentas(id As String) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 10))
         _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@Id", id))
         _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
 
         Return _Tabla
     End Function
+    Public Shared Function L_prObtenerPlantila(id As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 35))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@Id", id))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_prObtenerTotalesTransaccion(tipo As Integer, factura As Integer, fechai As String, fechaf As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 36))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@modulo", tipo))
+        _listParam.Add(New Datos.DParametro("@factura", factura))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
     Public Shared Function L_prServicioListarCuentasArqueo() As DataTable
         Dim _Tabla As DataTable
 

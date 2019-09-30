@@ -35,7 +35,7 @@ Public Class F1_ServicioCuentas
         _prCargarComboCategoriasServicios(cbCategoria)
 
 
-        Me.Text = "NUMERO CUENTAS SERVICIO"
+        Me.Text = "NUMERO CUENTAS PRODUCTOS"
         Dim blah As New Bitmap(New Bitmap(My.Resources.compra), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
@@ -81,7 +81,7 @@ Public Class F1_ServicioCuentas
         End With
         With grServicios.RootTable.Columns("servicio")
             .Width = 350
-            .Caption = "SERVICIOS"
+            .Caption = "PRODUCTOS"
             .Visible = True
         End With
         With grServicios.RootTable.Columns("senrocuenta")
@@ -121,7 +121,7 @@ Public Class F1_ServicioCuentas
         With grServicios.RootTable.Columns("existe")
             .Width = 100
 
-            .Visible = True
+            .Visible = False
         End With
         With grServicios
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
