@@ -52,7 +52,7 @@ Public Class PR_PlanCuentas
             objrep.SetDataSource(dt)
             MReportViewer.ReportSource = objrep
 
-            objrep.SetParameterValue("titulo", "AVICOLA ROLON S.R.L. " + gs_empresaDesc.ToUpper)
+            objrep.SetParameterValue("titulo", "ECONOMARKET " + gs_empresaDesc.ToUpper)
 
             MReportViewer.Show()
             MReportViewer.BringToFront()

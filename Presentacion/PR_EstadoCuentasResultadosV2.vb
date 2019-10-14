@@ -121,7 +121,7 @@ Public Class PR_EstadoCuentasResultadosV2
 
                 objrep.SetParameterValue("fechaDesde", tbFechaDel.Value.ToString("dd/MM/yyyy"))
                 objrep.SetParameterValue("fechaHasta", tbFechaAl.Value.ToString("dd/MM/yyyy"))
-                objrep.SetParameterValue("titulo", "AVICOLA ROLON S.R.L. " + gs_empresaDesc.ToUpper)
+                objrep.SetParameterValue("titulo", "ECONOMARKET " + gs_empresaDesc.ToUpper)
                 objrep.SetParameterValue("nit", gs_empresaNit.ToUpper)
 
                 MReportViewer.ReportSource = objrep

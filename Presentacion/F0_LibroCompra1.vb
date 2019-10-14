@@ -430,7 +430,7 @@ Public Class F0_LibroCompra1
                 objrep.SetParameterValue("nombre", dtTitulos.Rows(1).Item("yedesc").ToString)
 
                 'objrep.SetParameterValue("empresaDesc", gs_empresaDescSistema)
-                objrep.SetParameterValue("empresaDesc", "AVICOLA ROLON S.R.L. " + gs_empresaDesc.ToUpper)
+                objrep.SetParameterValue("empresaDesc", "ECONOMARKET " + gs_empresaDesc.ToUpper)
 
                 objrep.SetParameterValue("empresaNit", gs_empresaNit)
                 objrep.SetParameterValue("empresaDirec", gs_empresaDireccion)
@@ -503,7 +503,7 @@ Public Class F0_LibroCompra1
         DgdLC.PrimaryGrid.EnableRowFiltering = True
         DgdLC.PrimaryGrid.Filter.Visible = True
 
-        'Para Mostrar u Ocultar la Columna de Cabesera de las Filas
+        'Para Mostrar u Ocultar la Columna de Cabecera de las Filas
         DgdLC.PrimaryGrid.ShowRowHeaders = True
 
         'Para Mostrar el Indice de la Grilla
@@ -689,11 +689,8 @@ Public Class F0_LibroCompra1
 #End Region
 
     Private Sub _prSalir()
-
         _modulo.Select()
         _tab.Close()
-
-
     End Sub
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         _prSalir()
@@ -711,7 +708,6 @@ Public Class F0_LibroCompra1
                                    My.Resources.INFORMATION, inDuracion * 1000,
                                    eToastGlowColor.Blue,
                                    eToastPosition.TopCenter)
-
         End If
     End Sub
 
@@ -744,5 +740,9 @@ Public Class F0_LibroCompra1
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
         End If
+    End Sub
+
+    Private Sub btSalir_Click(sender As Object, e As EventArgs) Handles btSalir.Click
+        _prSalir()
     End Sub
 End Class

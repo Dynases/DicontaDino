@@ -24,9 +24,9 @@ Partial Class F0_LibroCompra1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_LibroCompra1))
+        Dim Background1 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
         Dim cbMes_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbAno_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
-        Dim Background1 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
         Me.TableLayoutPanelPrincipal = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupPanelAciones = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.PanelExAcciones = New DevComponents.DotNetBar.PanelEx()
@@ -37,6 +37,7 @@ Partial Class F0_LibroCompra1
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.TableLayoutPanelDatos = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupPanelListaVentas = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.DgdLC = New DevComponents.DotNetBar.SuperGrid.SuperGridControl()
         Me.dgjLibroCompra = New Janus.Windows.GridEX.GridEX()
         Me.GroupPanelDatosGenerales = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.PanelExDatosGenerales = New DevComponents.DotNetBar.PanelEx()
@@ -51,7 +52,7 @@ Partial Class F0_LibroCompra1
         Me.Tb2NitRazonSocial = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.JanusSuperTip1 = New Janus.Windows.Common.JanusSuperTip(Me.components)
-        Me.DgdLC = New DevComponents.DotNetBar.SuperGrid.SuperGridControl()
+        Me.btSalir = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -246,6 +247,7 @@ Partial Class F0_LibroCompra1
         Me.PanelExAcciones.AutoScroll = True
         Me.PanelExAcciones.CanvasColor = System.Drawing.SystemColors.Control
         Me.PanelExAcciones.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.PanelExAcciones.Controls.Add(Me.btSalir)
         Me.PanelExAcciones.Controls.Add(Me.btTxt)
         Me.PanelExAcciones.Controls.Add(Me.btReporte)
         Me.PanelExAcciones.Controls.Add(Me.CpExportarExcel)
@@ -392,6 +394,21 @@ Partial Class F0_LibroCompra1
         Me.GroupPanelListaVentas.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanelListaVentas.TabIndex = 2
         Me.GroupPanelListaVentas.Text = "LIBRO DE COMPRAS"
+        '
+        'DgdLC
+        '
+        Me.DgdLC.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.DgdLC.DefaultVisualStyles.HeaderStyles.Default.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgdLC.DefaultVisualStyles.HeaderStyles.Default.TextColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
+        Background1.Color1 = System.Drawing.Color.DodgerBlue
+        Me.DgdLC.DefaultVisualStyles.HeaderStyles.Selected.Background = Background1
+        Me.DgdLC.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DgdLC.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed
+        Me.DgdLC.Location = New System.Drawing.Point(0, 0)
+        Me.DgdLC.Name = "DgdLC"
+        Me.DgdLC.Size = New System.Drawing.Size(742, 327)
+        Me.DgdLC.TabIndex = 3
+        Me.DgdLC.Text = "SuperGridControl1"
         '
         'dgjLibroCompra
         '
@@ -621,20 +638,18 @@ Partial Class F0_LibroCompra1
         Me.JanusSuperTip1.AutoPopDelay = 2000
         Me.JanusSuperTip1.ImageList = Nothing
         '
-        'DgdLC
+        'btSalir
         '
-        Me.DgdLC.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.DgdLC.DefaultVisualStyles.HeaderStyles.Default.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DgdLC.DefaultVisualStyles.HeaderStyles.Default.TextColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Background1.Color1 = System.Drawing.Color.DodgerBlue
-        Me.DgdLC.DefaultVisualStyles.HeaderStyles.Selected.Background = Background1
-        Me.DgdLC.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DgdLC.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed
-        Me.DgdLC.Location = New System.Drawing.Point(0, 0)
-        Me.DgdLC.Name = "DgdLC"
-        Me.DgdLC.Size = New System.Drawing.Size(742, 327)
-        Me.DgdLC.TabIndex = 3
-        Me.DgdLC.Text = "SuperGridControl1"
+        Me.btSalir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btSalir.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.btSalir.Image = Global.Presentacion.My.Resources.Resources.atras
+        Me.btSalir.ImageFixedSize = New System.Drawing.Size(40, 40)
+        Me.btSalir.Location = New System.Drawing.Point(23, 230)
+        Me.btSalir.Name = "btSalir"
+        Me.btSalir.Size = New System.Drawing.Size(150, 50)
+        Me.btSalir.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btSalir.TabIndex = 7
+        Me.btSalir.Text = "     Salir"
         '
         'F0_LibroCompra1
         '
@@ -701,4 +716,5 @@ Partial Class F0_LibroCompra1
     Friend WithEvents dgjLibroCompra As Janus.Windows.GridEX.GridEX
     Friend WithEvents JanusSuperTip1 As Janus.Windows.Common.JanusSuperTip
     Friend WithEvents DgdLC As DevComponents.DotNetBar.SuperGrid.SuperGridControl
+    Friend WithEvents btSalir As DevComponents.DotNetBar.ButtonX
 End Class

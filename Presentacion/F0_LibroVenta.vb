@@ -445,7 +445,7 @@ Public Class F0_LibroVenta
         objrep.SetParameterValue("Nit", Tb2NitRazonSocial.Text)
 
         'objrep.SetParameterValue("empresaDesc", gs_empresaDescSistema)
-        objrep.SetParameterValue("empresaDesc", "AVICOLA ROLON S.R.L. " + gs_empresaDesc.ToUpper)
+        objrep.SetParameterValue("empresaDesc", "ECONOMARKET " + gs_empresaDesc.ToUpper)
         'gs_empresaDireccion
         objrep.SetParameterValue("empresaDirec", gs_empresaDireccion)
         If gi_empresaNumi = 1 Then 'filial
@@ -624,13 +624,14 @@ Public Class F0_LibroVenta
     End Function
 
     Private Sub _prSalir()
-   
-            _modulo.Select()
-            _tab.Close()
-
-
+        _modulo.Select()
+        _tab.Close()
     End Sub
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        _prSalir()
+    End Sub
+
+    Private Sub btSalir_Click(sender As Object, e As EventArgs) Handles btSalir.Click
         _prSalir()
     End Sub
 End Class

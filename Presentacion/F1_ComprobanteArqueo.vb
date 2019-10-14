@@ -1057,7 +1057,7 @@ Public Class F1_ComprobanteArqueo
         objrep.SetParameterValue("fecha", tbFechaI.Value.ToString("dd/MM/yyyy"))
         objrep.SetParameterValue("tc", tbTipoCambio.Value)
         objrep.SetParameterValue("titulo", "COMPROBANTE DE INGRESO")
-        objrep.SetParameterValue("titulo2", "AVICOLA ROLON S.R.L. " + gs_empresaDesc.ToUpper)
+        objrep.SetParameterValue("titulo2", "ECONOMARKET " + gs_empresaDesc.ToUpper)
         objrep.SetParameterValue("glosa", "")
         'cargar el numero de comprobante
         Dim dtNum As DataTable = L_prObtenerNumFacturaGeneral(1, tbFechaI.Value.Year, tbFechaI.Value.Month, 1)
@@ -1086,7 +1086,7 @@ Public Class F1_ComprobanteArqueo
         objrep.SetDataSource(dt)
         objrep.SetParameterValue("fechaDesde", "")
         objrep.SetParameterValue("fechaHasta", "")
-        objrep.SetParameterValue("titulo", "AVICOLA ROLON S.R.L. " + gs_empresaDesc.ToUpper)
+        objrep.SetParameterValue("titulo", "ECONOMARKET " + gs_empresaDesc.ToUpper)
         objrep.SetParameterValue("nit", gs_empresaNit.ToUpper)
         objrep.SetParameterValue("ultimoRegistro", 0)
 

@@ -253,7 +253,7 @@ Public Class PR_Presupuesto
 
             Dim objrep As New R_PresupuestoResumen
             objrep.SetDataSource(dt)
-            objrep.SetParameterValue("titulo", "AVICOLA ROLON S.R.L. " + gs_empresaDesc.ToUpper)
+            objrep.SetParameterValue("titulo", "ECONOMARKET" + gs_empresaDesc.ToUpper)
 
             MReportViewer.ReportSource = objrep
 

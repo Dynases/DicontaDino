@@ -769,7 +769,7 @@ ControlChars.Lf & "Stack Trace:" & ControlChars.Lf & e.StackTrace
         objrep.SetDataSource(dt)
         objrep.SetParameterValue("fechaDesde", "")
         objrep.SetParameterValue("fechaHasta", "")
-        objrep.SetParameterValue("titulo", "AVICOLA ROLON S.R.L. " + gs_empresaDescSistema.ToUpper)
+        objrep.SetParameterValue("titulo", "ECONOMARKET " + gs_empresaDescSistema.ToUpper)
         objrep.SetParameterValue("nit", gs_empresaNit.ToUpper)
         objrep.SetParameterValue("ultimoRegistro", 0)
 

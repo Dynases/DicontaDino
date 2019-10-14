@@ -29,6 +29,7 @@ Partial Class F0_LibroVenta
         Me.TableLayoutPanelPrincipal = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupPanelAciones = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.PanelExAcciones = New DevComponents.DotNetBar.PanelEx()
+        Me.btSalir = New DevComponents.DotNetBar.ButtonX()
         Me.Bt1Generar = New DevComponents.DotNetBar.ButtonX()
         Me.Bt4Txt = New DevComponents.DotNetBar.ButtonX()
         Me.Bt2Reporte = New DevComponents.DotNetBar.ButtonX()
@@ -265,6 +266,7 @@ Partial Class F0_LibroVenta
         Me.PanelExAcciones.AutoScroll = True
         Me.PanelExAcciones.CanvasColor = System.Drawing.SystemColors.Control
         Me.PanelExAcciones.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.PanelExAcciones.Controls.Add(Me.btSalir)
         Me.PanelExAcciones.Controls.Add(Me.Bt1Generar)
         Me.PanelExAcciones.Controls.Add(Me.Bt4Txt)
         Me.PanelExAcciones.Controls.Add(Me.Bt2Reporte)
@@ -281,6 +283,19 @@ Partial Class F0_LibroVenta
         Me.PanelExAcciones.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
         Me.PanelExAcciones.Style.GradientAngle = 90
         Me.PanelExAcciones.TabIndex = 4
+        '
+        'btSalir
+        '
+        Me.btSalir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btSalir.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.btSalir.Image = Global.Presentacion.My.Resources.Resources.atras
+        Me.btSalir.ImageFixedSize = New System.Drawing.Size(40, 40)
+        Me.btSalir.Location = New System.Drawing.Point(23, 230)
+        Me.btSalir.Name = "btSalir"
+        Me.btSalir.Size = New System.Drawing.Size(150, 50)
+        Me.btSalir.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btSalir.TabIndex = 8
+        Me.btSalir.Text = "     Salir"
         '
         'Bt1Generar
         '
@@ -819,4 +834,5 @@ Partial Class F0_LibroVenta
     Friend WithEvents tbFechaF As DevComponents.Editors.DateTimeAdv.DateTimeInput
     Friend WithEvents tbFechaI As DevComponents.Editors.DateTimeAdv.DateTimeInput
     Friend WithEvents tbTipoFactura As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents btSalir As DevComponents.DotNetBar.ButtonX
 End Class

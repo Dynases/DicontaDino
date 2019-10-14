@@ -134,6 +134,9 @@ Partial Class F1_Empresas
         'btnSalir
         '
         '
+        'btnGrabar
+        '
+        '
         'btnModificar
         '
         '
