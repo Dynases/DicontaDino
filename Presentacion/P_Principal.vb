@@ -1200,4 +1200,18 @@ Public Class P_Principal
         frm.Show()
         tab3.Text = frm.Text
     End Sub
+
+    Private Sub btConfBanco_Click(sender As Object, e As EventArgs) Handles btConfBanco.Click
+        SideNav1.IsMenuExpanded = False
+        Ventana.Select()
+        Dim frm As New F1_Bancos
+        frm._modulo = FP_Configuracion
+        Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
+        frm._tab = tab3
+        Dim panel As Panel = P_Global._fnCrearPanelVentanas(frm)
+        superTabControl3.SelectedTabIndex = superTabControl3.Tabs.Count - 1
+        tab3.AttachedControl.Controls.Add(panel)
+        frm.Show()
+        tab3.Text = frm.Text
+    End Sub
 End Class

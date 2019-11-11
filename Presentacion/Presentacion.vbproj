@@ -862,6 +862,12 @@
     <Compile Include="Util\Efecto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Util\F1_Bancos.Designer.vb">
+      <DependentUpon>F1_Bancos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Util\F1_Bancos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Version.vb" />
     <Compile Include="Visualizador.designer.vb">
       <DependentUpon>Visualizador.vb</DependentUpon>
@@ -1252,6 +1258,9 @@
     <EmbeddedResource Include="Util\Efecto.resx">
       <DependentUpon>Efecto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Util\F1_Bancos.resx">
+      <DependentUpon>F1_Bancos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Visualizador.resx">
       <DependentUpon>Visualizador.vb</DependentUpon>
     </EmbeddedResource>
@@ -1510,9 +1519,9 @@
     <None Include="Resources\iconoactivo.png" />
     <None Include="Resources\at1.png" />
     <None Include="Resources\next1.png" />
-    <None Include="Resources\imageDefault.jpg" />
     <None Include="Resources\insumos.png" />
     <None Include="Resources\almacen.png" />
+    <None Include="Resources\imageDefault.jpg" />
     <Content Include="Resources\nuevo2.png" />
     <Content Include="Resources\ok.png" />
     <None Include="Resources\search.png" />
