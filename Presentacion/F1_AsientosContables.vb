@@ -484,13 +484,13 @@ Public Class F1_AsientosContables
 
 
             Dim total As Double = TotalTransaccion
-                If (total > 0) Then
+            If (total > 0) Then
 
                 Dim Glosa As String = dt.Rows(i).Item("cadesc")
-                    Dim conversion As Double = (total * (porcentaje / 100))
-                        conversion = to3Decimales(conversion)
-                        Dim totales As Double = Round(conversion, 2)
-                        Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
+                Dim conversion As Double = (total * (porcentaje / 100))
+                conversion = to3Decimales(conversion)
+                Dim totales As Double = Round(conversion, 2)
+                Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
                 Linea = Linea + 1
 
                 If (dt.Rows(i).Item("chdebe") > 0) Then
@@ -498,6 +498,219 @@ Public Class F1_AsientosContables
                 Else
                     tabla.Rows.Add(numiCuenta, DBNull.Value, Glosa + " DEL " + tbFechaI.Value.ToString("dd/MM/yyyy") + " AL " + tbFechaF.Value.ToString("dd/MM/yyyy"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
                 End If
+
+
+            End If
+
+
+
+
+
+        Next
+
+        _prArmarCuadre(tabla)
+
+        ''canumi , nro, cadesc, chporcen, chdebe, chhaber 
+        grComprobante.DataSource = tabla
+        grComprobante.RetrieveStructure()
+
+
+        Dim dtt As DataTable = _LisTransacciones
+
+        With grComprobante.RootTable.Columns("canumi")
+            .Width = 100
+
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("variable")
+            .Width = 100
+
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("linea")
+            .Width = 100
+
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("nro")
+            .Width = 120
+            .Caption = "NRO CUENTA"
+            .Visible = True
+        End With
+        With grComprobante.RootTable.Columns("cadesc")
+            .Width = 580
+            .Caption = "DESCRIPCION"
+            .Visible = True
+        End With
+        With grComprobante.RootTable.Columns("chporcen")
+            .Width = 100
+
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("chdebe")
+            .Width = 180
+            .Caption = "DEBE"
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("chhaber")
+            .Width = 180
+            .Caption = "HABER"
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("tc")
+            .Width = 70
+            .Caption = "TC"
+            .Visible = True
+            .FormatString = "0.00"
+        End With
+        With grComprobante.RootTable.Columns("debe")
+            .Width = 100
+            .Caption = "DEBE BS"
+            .Visible = True
+            .TextAlignment = TextAlignment.Far
+            .FormatString = "0.00"
+            .TotalFormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
+
+        End With
+        With grComprobante.RootTable.Columns("haber")
+            .Width = 100
+            .Caption = "HABER BS"
+            .Visible = True
+            .FormatString = "0.00"
+            .TotalFormatString = "0.00"
+            .TextAlignment = TextAlignment.Far
+            .AggregateFunction = AggregateFunction.Sum
+
+        End With
+
+        With grComprobante.RootTable.Columns("debesus")
+            .Width = 100
+            .Caption = "DEBE SUS"
+            .Visible = True
+            .TextAlignment = TextAlignment.Far
+            .FormatString = "0.00"
+            .TotalFormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
+
+        End With
+        With grComprobante.RootTable.Columns("habersus")
+            .Width = 100
+            .Caption = "HABER SUS"
+            .Visible = True
+            .FormatString = "0.00"
+            .TotalFormatString = "0.00"
+            .TextAlignment = TextAlignment.Far
+            .AggregateFunction = AggregateFunction.Sum
+
+        End With
+        With grComprobante
+            .TotalRowFormatStyle.BackColor = Color.Gold
+            .TotalRowPosition = TotalRowPosition.BottomFixed
+            .TotalRow = InheritableBoolean.True
+
+            .GroupByBoxVisible = False
+            'diseño de la grilla
+            .VisualStyle = VisualStyle.Office2007
+        End With
+        Dim aux As DataTable = CType(grComprobante.DataSource, DataTable)
+
+        'Lb_efec.Text = IIf(IsDBNull(aux.Compute("Sum(debe)", "")), 0, aux.Compute("Sum(debe)", ""))
+        'Lb_Saldo.Text = IIf(IsDBNull(aux.Compute("Sum(debe)", "")), 0, aux.Compute("Sum(debe)", ""))
+        _prAplicarCondiccionJanus()
+    End Sub
+
+
+
+    Private Sub _prArmarAsientoCuentasPorPagar()
+        Dim numiCuenta As Integer
+        Dim dt As New DataTable
+        dt = L_prServicioListarCuentas(cbSucursal.Value)  ''Ok
+        Dim tabla As DataTable = dt.Copy
+        tabla.Rows.Clear()
+        Dim BanderaCuentaPorCobrar As Boolean = False
+        Dim dtPagos As DataTable
+
+        For i As Integer = 0 To dt.Rows.Count - 1
+            dtPagos = New DataTable
+
+            Dim dtDetalle As DataTable = L_prObtenerDetallePlantilla(dt.Rows(i).Item("canumi"), cbSucursal.Value)
+            Dim tipo As Integer = dtDetalle.Rows(0).Item("tipo")
+
+            If (tipo = -1) Then ''''Venta Contado
+                dtPagos = L_prObtenerPagosTotalesCuentaPorCobrar(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
+                tabla.ImportRow(dt.Rows(i))
+            Else
+                If (tipo = -2) Then
+                    tabla.ImportRow(dt.Rows(i))
+                    dtPagos = L_prObtenerPagosTotalesCuentaPorCobrarCAJA(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
+                Else
+                    Dim dtCuentasBancos = L_prServicioListarCuentasBAncos(cbSucursal.Value, tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))  ''Ok
+
+                    For j As Integer = 0 To dtCuentasBancos.Rows.Count - 1 Step 1
+                        tabla.ImportRow(dtCuentasBancos.Rows(j))
+                        dtPagos = L_prObtenerPagosTotalesCuentaPorCobrarByBanco(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"), dtCuentasBancos.Rows(j).Item("canumi"))
+
+
+                        numiCuenta = dtCuentasBancos.Rows(j).Item("canumi")
+
+
+                        If (dtPagos.Rows.Count > 0) Then
+
+                            For k As Integer = 0 To dtPagos.Rows.Count - 1 Step 1
+                                Dim Glosa As String = dt.Rows(i).Item("cadesc")
+
+                                Dim conversion As Double = dtPagos.Rows(k).Item("tdmonto")
+                                conversion = to3Decimales(conversion)
+                                Dim totales As Double = Round(conversion, 2)
+                                Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
+                                Linea = Linea + 1
+
+                                If (dt.Rows(i).Item("chdebe") > 0) Then
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                                Else
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                                End If
+                            Next
+
+
+
+                        End If
+
+
+                    Next
+
+                End If
+
+            End If
+
+            ''canumi , nro,cadesc ,chporcen,chdebe ,chhaber 
+            Dim porcentaje As Double = dt.Rows(i).Item("chporcen")
+
+
+
+            numiCuenta = dt.Rows(i).Item("canumi")
+
+            Dim numicuentaatc As Integer = 21 'ATC
+
+            If (dtPagos.Rows.Count > 0) Then
+
+                For k As Integer = 0 To dtPagos.Rows.Count - 1 Step 1
+                    Dim Glosa As String = dt.Rows(i).Item("cadesc")
+
+                    Dim conversion As Double = dtPagos.Rows(k).Item("tdmonto")
+                    conversion = to3Decimales(conversion)
+                    Dim totales As Double = Round(conversion, 2)
+                    Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
+                    Linea = Linea + 1
+
+                    If (dt.Rows(i).Item("chdebe") > 0) Then
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                    Else
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                    End If
+                Next
+
 
 
             End If
@@ -1021,7 +1234,14 @@ Public Class F1_AsientosContables
         End If
         _prCrearColumns()
 
-        _prCargarTablaComprobantes()
+        If (cbSucursal.Value = 1003 Or cbSucursal.Value = 1004) Then
+
+            _prArmarAsientoCuentasPorPagar()
+        Else
+
+            _prCargarTablaComprobantes()
+        End If
+
 
     End Sub
 
