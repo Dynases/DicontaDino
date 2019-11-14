@@ -679,6 +679,8 @@ Public Class F1_AsientosContables
 
 
                     Next
+                    dtPagos = New DataTable
+
 
                 End If
 
