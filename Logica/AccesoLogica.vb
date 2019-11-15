@@ -5873,6 +5873,20 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
         Return _Tabla
     End Function
 
+    Public Shared Function L_prServicioListarCuentasBAncosPorCobrar(id As String, FechaI As String, FechaF As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 47))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@Id", id))
+        _listParam.Add(New Datos.DParametro("@fechaI", FechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", FechaF))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
     Public Shared Function L_prObtenerDetallePlantilla(cuenta As String, id As Integer) As DataTable
         Dim _Tabla As DataTable
 
@@ -5941,11 +5955,39 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
         Return _Tabla
     End Function
 
+
+    Public Shared Function L_prObtenerPagosTotalesPorCobrar(fechai As String, fechaf As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 45))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
     Public Shared Function L_prObtenerPagosTotalesCuentaPorCobrarByBanco(fechai As String, fechaf As String, _canumi As Integer) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 44))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _listParam.Add(New Datos.DParametro("@canumi", _canumi))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_prObtenerPagosTotalesCuentaByBanco(fechai As String, fechaf As String, _canumi As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 48))
         _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@fechaI", fechai))
         _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
@@ -5961,6 +6003,21 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
 
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 42))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+
+    Public Shared Function L_prObtenerPagosTotalesCAJA(fechai As String, fechaf As String) As DataTable
+
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 46))
         _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@fechaI", fechai))
         _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
