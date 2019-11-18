@@ -466,10 +466,16 @@ Public Class F1_AsientosContables
             Dim tipo As Integer = dtDetalle.Rows(0).Item("tipo")
 
             If (tipo = 1 Or tipo = 0 Or tipo = 2) Then ''''Venta Contado
-                TotalTransaccion = ObtenerTotalVentasCreditoOContado(tipo)
-            Else
+                If (cbSucursal.Value = 1 Or cbSucursal.Value = 2) Then
+                    TotalTransaccion = ObtenerTotales()
 
+                Else
+                    TotalTransaccion = ObtenerTotalVentasCreditoOContado(tipo)
+                End If
+
+            Else
                 TotalTransaccion = ObtenerTotales()
+
             End If
 
             ''canumi , nro,cadesc ,chporcen,chdebe ,chhaber 
@@ -486,18 +492,84 @@ Public Class F1_AsientosContables
             Dim total As Double = TotalTransaccion
             If (total > 0) Then
 
-                Dim Glosa As String = dt.Rows(i).Item("cadesc")
-                Dim conversion As Double = (total * (porcentaje / 100))
-                conversion = to3Decimales(conversion)
-                Dim totales As Double = Round(conversion, 2)
-                Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
-                Linea = Linea + 1
 
-                If (dt.Rows(i).Item("chdebe") > 0) Then
-                    tabla.Rows.Add(numiCuenta, DBNull.Value, Glosa + " DEL " + tbFechaI.Value.ToString("dd/MM/yyyy") + " AL " + tbFechaF.Value.ToString("dd/MM/yyyy"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                If (tipo = 0) Then
+
+                    If (cbSucursal.Value = 3) Then  '' Si es Cuenta de Credito y Ademas estamos en ventas a credito desglosamos los clientes
+                        Dim dtListado As DataTable = L_prListarClienteCredito(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
+                        For j As Integer = 0 To dtListado.Rows.Count - 1 Step 1
+                            Dim Glosa As String = dt.Rows(i).Item("cadesc")
+
+                            Dim conversion As Double = dtListado.Rows(j).Item("monto")
+                            conversion = to3Decimales(conversion)
+                            Dim totales As Double = Round(conversion, 2)
+                            Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
+                            Linea = Linea + 1
+
+                            If (dt.Rows(i).Item("chdebe") > 0) Then
+                                tabla.Rows.Add(numiCuenta, DBNull.Value, dtListado.Rows(j).Item("cliente") + " con Factura Nro #" + dtListado.Rows(j).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                            Else
+                                tabla.Rows.Add(numiCuenta, DBNull.Value, dtListado.Rows(j).Item("cliente") + " con Factura Nro #" + dtListado.Rows(j).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                            End If
+                        Next
+
+                    Else  '''Listar Proveedores por compras a creditos
+
+                        If (cbSucursal.Value = 1) Then  ''''Factura
+                            Dim dtListado As DataTable = L_prListarProveedorCredito(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
+                            For j As Integer = 0 To dtListado.Rows.Count - 1 Step 1
+                                Dim Glosa As String = dt.Rows(i).Item("cadesc")
+
+                                Dim conversion As Double = dtListado.Rows(j).Item("monto")
+                                conversion = to3Decimales(conversion)
+                                Dim totales As Double = Round(conversion, 2)
+                                Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
+                                Linea = Linea + 1
+
+                                If (dt.Rows(i).Item("chdebe") > 0) Then
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtListado.Rows(j).Item("proveedor") + " con Factura Nro #" + dtListado.Rows(j).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                                Else
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtListado.Rows(j).Item("proveedor") + " con Factura Nro #" + dtListado.Rows(j).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                                End If
+                            Next
+
+                        Else   '''Compra con Recibo
+                            Dim dtListado As DataTable = L_prListarProveedorCreditoSinFactura(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
+                            For j As Integer = 0 To dtListado.Rows.Count - 1 Step 1
+                                Dim Glosa As String = dt.Rows(i).Item("cadesc")
+
+                                Dim conversion As Double = dtListado.Rows(j).Item("monto")
+                                conversion = to3Decimales(conversion)
+                                Dim totales As Double = Round(conversion, 2)
+                                Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
+                                Linea = Linea + 1
+
+                                If (dt.Rows(i).Item("chdebe") > 0) Then
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtListado.Rows(j).Item("proveedor") + " con Factura Nro #" + dtListado.Rows(j).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                                Else
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtListado.Rows(j).Item("proveedor") + " con Factura Nro #" + dtListado.Rows(j).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                                End If
+                            Next
+                        End If
+
+                    End If
+
+
                 Else
-                    tabla.Rows.Add(numiCuenta, DBNull.Value, Glosa + " DEL " + tbFechaI.Value.ToString("dd/MM/yyyy") + " AL " + tbFechaF.Value.ToString("dd/MM/yyyy"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                    Dim Glosa As String = dt.Rows(i).Item("cadesc")
+                    Dim conversion As Double = (total * (porcentaje / 100))
+                    conversion = to3Decimales(conversion)
+                    Dim totales As Double = Round(conversion, 2)
+                    Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
+                    Linea = Linea + 1
+
+                    If (dt.Rows(i).Item("chdebe") > 0) Then
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, Glosa + " DEL " + tbFechaI.Value.ToString("dd/MM/yyyy") + " AL " + tbFechaF.Value.ToString("dd/MM/yyyy"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                    Else
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, Glosa + " DEL " + tbFechaI.Value.ToString("dd/MM/yyyy") + " AL " + tbFechaF.Value.ToString("dd/MM/yyyy"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                    End If
                 End If
+
 
 
             End If
@@ -667,9 +739,9 @@ Public Class F1_AsientosContables
                                 Linea = Linea + 1
 
                                 If (dt.Rows(i).Item("chdebe") > 0) Then
-                                    tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
                                 Else
-                                    tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
                                 End If
                             Next
 
@@ -707,9 +779,9 @@ Public Class F1_AsientosContables
                     Linea = Linea + 1
 
                     If (dt.Rows(i).Item("chdebe") > 0) Then
-                        tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
                     Else
-                        tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, dtPagos.Rows(k).Item("proveedor") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
                     End If
                 Next
 
@@ -881,9 +953,9 @@ Public Class F1_AsientosContables
                                 Linea = Linea + 1
 
                                 If (dt.Rows(i).Item("chdebe") > 0) Then
-                                    tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("cliente") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtPagos.Rows(k).Item("cliente") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
                                 Else
-                                    tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("cliente") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtPagos.Rows(k).Item("cliente") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
                                 End If
                             Next
 
@@ -921,9 +993,9 @@ Public Class F1_AsientosContables
                     Linea = Linea + 1
 
                     If (dt.Rows(i).Item("chdebe") > 0) Then
-                        tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("cliente") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, dtPagos.Rows(k).Item("cliente") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
                     Else
-                        tabla.Rows.Add(numiCuenta, DBNull.Value, "Proveedor " + dtPagos.Rows(k).Item("cliente") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, dtPagos.Rows(k).Item("cliente") + " con Factura Nro #" + dtPagos.Rows(k).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
                     End If
                 Next
 
