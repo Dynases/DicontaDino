@@ -1548,7 +1548,7 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
 
     Public Shared Function L_prComprobanteGrabarIntegracion(ByRef _numi As String, _numDoc As String, _tipo As String, _anio As String, _mes As String, _num As String, _fecha As String, _tipoCambio As String, _glosa As String, _obs As String, _numiEmpresa As String, _detalle As DataTable, _detalle2 As DataTable, _ifnumi As String, _ifto001numi As Integer, _iftc As Double,
                                                             _iffechai As String, _iffechaf As String, _ifest As Integer, _dtestado As DataTable, _sucursal As Integer,
-                                                            tipo As Integer, factura As Integer, fechai As String, fechaf As String) As Boolean
+                                                            tipo As Integer, factura As Integer, fechai As String, fechaf As String, _oaTipo As Integer) As Boolean
         Dim _resultado As Boolean
 
         Dim _Tabla As DataTable
@@ -1557,7 +1557,7 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
         _listParam.Add(New Datos.DParametro("@tipo", 1))
 
         _listParam.Add(New Datos.DParametro("@oanumdoc", _numDoc))
-        _listParam.Add(New Datos.DParametro("@oatip", 1))
+        _listParam.Add(New Datos.DParametro("@oatip", _oaTipo))
         _listParam.Add(New Datos.DParametro("@oaano", _anio))
         _listParam.Add(New Datos.DParametro("@oames", _mes))
         '_listParam.Add(New Datos.DParametro("@oanum", _num))
@@ -6072,6 +6072,19 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
 
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 51))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_prListarProveedorCreditoRetencion(fechai As String, fechaf As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 52))
         _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@fechaI", fechai))
         _listParam.Add(New Datos.DParametro("@fechaF", fechaf))

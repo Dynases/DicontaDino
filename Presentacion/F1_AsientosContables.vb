@@ -452,6 +452,197 @@ Public Class F1_AsientosContables
         Return 0
     End Function
 
+
+    Private Sub _prCargarTablaComprobantesRetencion()
+        Dim k As Integer
+        Dim dt As New DataTable
+        dt = L_prServicioListarCuentas(cbSucursal.Value)  ''Ok
+        Dim tabla As DataTable = dt.Copy
+        tabla.Rows.Clear()
+        Dim BanderaCuentaPorCobrar As Boolean = False
+        Dim TotalTransaccion As Double
+        For i As Integer = 0 To dt.Rows.Count - 1
+
+            Dim dtDetalle As DataTable = L_prObtenerDetallePlantilla(dt.Rows(i).Item("canumi"), cbSucursal.Value)
+            Dim tipo As Integer = dtDetalle.Rows(0).Item("tipo")
+
+
+            TotalTransaccion = ObtenerTotales()
+            TotalTransaccion = ((TotalTransaccion * 100) / 92)
+
+
+
+            ''canumi , nro,cadesc ,chporcen,chdebe ,chhaber 
+            Dim porcentaje As Double = dt.Rows(i).Item("chporcen")
+
+            Dim numiCuenta As Integer = dt.Rows(i).Item("canumi")
+
+            Dim numicuentaatc As Integer = 21 'ATC
+
+            Dim total As Double = TotalTransaccion
+            If (total > 0) Then
+                Dim dtObtenerCuenta As DataTable = L_prCuentaDiferencia(numiCuenta)
+                tabla.Rows.Add(dtObtenerCuenta.Rows(0).Item("canumi"), dtObtenerCuenta.Rows(0).Item("cacta"), dtObtenerCuenta.Rows(0).Item("cadesc"), DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, Escuela, 0) '''' Aqui agrego al padre
+                tabla.ImportRow(dt.Rows(i))  '''Aqui agrego al hijo
+                If (tipo = 0) Then
+
+
+                    '''Compra con Recibo
+                    Dim dtListado As DataTable = L_prListarProveedorCreditoRetencion(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
+                    For j As Integer = 0 To dtListado.Rows.Count - 1 Step 1
+                                Dim Glosa As String = dt.Rows(i).Item("cadesc")
+
+                                Dim conversion As Double = dtListado.Rows(j).Item("monto")
+                                conversion = to3Decimales(conversion)
+                                Dim totales As Double = Round(conversion, 2)
+                                Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
+                                Linea = Linea + 1
+
+                                If (dt.Rows(i).Item("chdebe") > 0) Then
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtListado.Rows(j).Item("proveedor") + " con Factura Nro #" + dtListado.Rows(j).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                                Else
+                                    tabla.Rows.Add(numiCuenta, DBNull.Value, dtListado.Rows(j).Item("proveedor") + " con Factura Nro #" + dtListado.Rows(j).Item("nroDocumento"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                                End If
+                            Next
+
+
+
+                Else
+                    Dim Glosa As String = dt.Rows(i).Item("cadesc")
+                    Dim conversion As Double = (total * (porcentaje / 100))
+                    conversion = to3Decimales(conversion)
+                    Dim totales As Double = Round(conversion, 2)
+                    Dim TotalSus As Double = Round(to3Decimales(totales / (tbTipoCambio.Value)), 2)
+                    Linea = Linea + 1
+
+                    If (dt.Rows(i).Item("chdebe") > 0) Then
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, Glosa + " DEL " + tbFechaI.Value.ToString("dd/MM/yyyy") + " AL " + tbFechaF.Value.ToString("dd/MM/yyyy"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, totales, DBNull.Value, TotalSus, DBNull.Value, Escuela, Linea)
+                    Else
+                        tabla.Rows.Add(numiCuenta, DBNull.Value, Glosa + " DEL " + tbFechaI.Value.ToString("dd/MM/yyyy") + " AL " + tbFechaF.Value.ToString("dd/MM/yyyy"), DBNull.Value, DBNull.Value, DBNull.Value, tbTipoCambio.Value, DBNull.Value, totales, DBNull.Value, TotalSus, Escuela, Linea)
+                    End If
+                End If
+
+
+
+            End If
+
+
+
+
+
+        Next
+
+        _prArmarCuadre(tabla)
+
+        ''canumi , nro, cadesc, chporcen, chdebe, chhaber 
+        grComprobante.DataSource = tabla
+        grComprobante.RetrieveStructure()
+
+
+        Dim dtt As DataTable = _LisTransacciones
+
+        With grComprobante.RootTable.Columns("canumi")
+            .Width = 100
+
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("variable")
+            .Width = 100
+
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("linea")
+            .Width = 100
+
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("nro")
+            .Width = 120
+            .Caption = "NRO CUENTA"
+            .Visible = True
+        End With
+        With grComprobante.RootTable.Columns("cadesc")
+            .Width = 580
+            .Caption = "DESCRIPCION"
+            .Visible = True
+        End With
+        With grComprobante.RootTable.Columns("chporcen")
+            .Width = 100
+
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("chdebe")
+            .Width = 180
+            .Caption = "DEBE"
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("chhaber")
+            .Width = 180
+            .Caption = "HABER"
+            .Visible = False
+        End With
+        With grComprobante.RootTable.Columns("tc")
+            .Width = 70
+            .Caption = "TC"
+            .Visible = True
+            .FormatString = "0.00"
+        End With
+        With grComprobante.RootTable.Columns("debe")
+            .Width = 100
+            .Caption = "DEBE BS"
+            .Visible = True
+            .TextAlignment = TextAlignment.Far
+            .FormatString = "0.00"
+            .TotalFormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
+
+        End With
+        With grComprobante.RootTable.Columns("haber")
+            .Width = 100
+            .Caption = "HABER BS"
+            .Visible = True
+            .FormatString = "0.00"
+            .TotalFormatString = "0.00"
+            .TextAlignment = TextAlignment.Far
+            .AggregateFunction = AggregateFunction.Sum
+
+        End With
+
+        With grComprobante.RootTable.Columns("debesus")
+            .Width = 100
+            .Caption = "DEBE SUS"
+            .Visible = True
+            .TextAlignment = TextAlignment.Far
+            .FormatString = "0.00"
+            .TotalFormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
+
+        End With
+        With grComprobante.RootTable.Columns("habersus")
+            .Width = 100
+            .Caption = "HABER SUS"
+            .Visible = True
+            .FormatString = "0.00"
+            .TotalFormatString = "0.00"
+            .TextAlignment = TextAlignment.Far
+            .AggregateFunction = AggregateFunction.Sum
+
+        End With
+        With grComprobante
+            .TotalRowFormatStyle.BackColor = Color.Gold
+            .TotalRowPosition = TotalRowPosition.BottomFixed
+            .TotalRow = InheritableBoolean.True
+
+            .GroupByBoxVisible = False
+            'diseño de la grilla
+            .VisualStyle = VisualStyle.Office2007
+        End With
+        Dim aux As DataTable = CType(grComprobante.DataSource, DataTable)
+
+        'Lb_efec.Text = IIf(IsDBNull(aux.Compute("Sum(debe)", "")), 0, aux.Compute("Sum(debe)", ""))
+        'Lb_Saldo.Text = IIf(IsDBNull(aux.Compute("Sum(debe)", "")), 0, aux.Compute("Sum(debe)", ""))
+        _prAplicarCondiccionJanus()
+    End Sub
     Private Sub _prCargarTablaComprobantes()
         Dim k As Integer
         Dim dt As New DataTable
@@ -481,18 +672,15 @@ Public Class F1_AsientosContables
             ''canumi , nro,cadesc ,chporcen,chdebe ,chhaber 
             Dim porcentaje As Double = dt.Rows(i).Item("chporcen")
 
-
-            tabla.ImportRow(dt.Rows(i))
             Dim numiCuenta As Integer = dt.Rows(i).Item("canumi")
 
             Dim numicuentaatc As Integer = 21 'ATC
 
-
-
             Dim total As Double = TotalTransaccion
             If (total > 0) Then
-
-
+                Dim dtObtenerCuenta As DataTable = L_prCuentaDiferencia(numiCuenta)
+                tabla.Rows.Add(dtObtenerCuenta.Rows(0).Item("canumi"), dtObtenerCuenta.Rows(0).Item("cacta"), dtObtenerCuenta.Rows(0).Item("cadesc"), DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, Escuela, 0) '''' Aqui agrego al padre
+                tabla.ImportRow(dt.Rows(i))  '''Aqui agrego al hijo
                 If (tipo = 0) Then
 
                     If (cbSucursal.Value = 3) Then  '' Si es Cuenta de Credito y Ademas estamos en ventas a credito desglosamos los clientes
@@ -711,16 +899,29 @@ Public Class F1_AsientosContables
 
             If (tipo = -1) Then ''''Venta Contado
                 dtPagos = L_prObtenerPagosTotalesCuentaPorCobrar(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
-                tabla.ImportRow(dt.Rows(i))
+
             Else
                 If (tipo = -2) Then
-                    tabla.ImportRow(dt.Rows(i))
+
                     dtPagos = L_prObtenerPagosTotalesCuentaPorCobrarCAJA(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
                 Else
                     Dim dtCuentasBancos = L_prServicioListarCuentasBAncos(cbSucursal.Value, tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))  ''Ok
 
+                    Dim numiPadre As Integer = 0
+
                     For j As Integer = 0 To dtCuentasBancos.Rows.Count - 1 Step 1
+
+                        numiCuenta = dtCuentasBancos.Rows(j).Item("canumi")
+                        Dim dtObtenerCuenta As DataTable = L_prCuentaDiferencia(numiCuenta)
+                        If (dtObtenerCuenta.Rows(0).Item("canumi") <> numiPadre) Then
+                            numiPadre = dtObtenerCuenta.Rows(0).Item("canumi")
+                            tabla.Rows.Add(dtObtenerCuenta.Rows(0).Item("canumi"), dtObtenerCuenta.Rows(0).Item("cacta"), dtObtenerCuenta.Rows(0).Item("cadesc"), DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, Escuela, 0) '''' Aqui agrego al padre
+                        End If
+
                         tabla.ImportRow(dtCuentasBancos.Rows(j))
+
+
+
                         dtPagos = L_prObtenerPagosTotalesCuentaPorCobrarByBanco(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"), dtCuentasBancos.Rows(j).Item("canumi"))
 
 
@@ -768,6 +969,10 @@ Public Class F1_AsientosContables
             Dim numicuentaatc As Integer = 21 'ATC
 
             If (dtPagos.Rows.Count > 0) Then
+                numiCuenta = dt.Rows(i).Item("canumi")
+                Dim dtObtenerCuenta As DataTable = L_prCuentaDiferencia(numiCuenta)
+                tabla.Rows.Add(dtObtenerCuenta.Rows(0).Item("canumi"), dtObtenerCuenta.Rows(0).Item("cacta"), dtObtenerCuenta.Rows(0).Item("cadesc"), DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, Escuela, 0) '''' Aqui agrego al padre
+                tabla.ImportRow(dt.Rows(i))  '''Aqui agrego al hijo
 
                 For k As Integer = 0 To dtPagos.Rows.Count - 1 Step 1
                     Dim Glosa As String = dt.Rows(i).Item("cadesc")
@@ -925,15 +1130,22 @@ Public Class F1_AsientosContables
 
             If (tipo = -1) Then ''''Venta Contado
                 dtPagos = L_prObtenerPagosTotalesPorCobrar(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
-                tabla.ImportRow(dt.Rows(i))
+
             Else
                 If (tipo = -2) Then
-                    tabla.ImportRow(dt.Rows(i))
+
                     dtPagos = L_prObtenerPagosTotalesCAJA(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
                 Else
                     Dim dtCuentasBancos = L_prServicioListarCuentasBAncosPorCobrar(cbSucursal.Value, tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))  ''Ok
 
                     For j As Integer = 0 To dtCuentasBancos.Rows.Count - 1 Step 1
+                        numiCuenta = dtCuentasBancos.Rows(j).Item("canumi")
+                        Dim dtObtenerCuenta As DataTable = L_prCuentaDiferencia(numiCuenta)
+                        If (dtObtenerCuenta.Rows(0).Item("canumi") <> numiPadre) Then
+                            numiPadre = dtObtenerCuenta.Rows(0).Item("canumi")
+                            tabla.Rows.Add(dtObtenerCuenta.Rows(0).Item("canumi"), dtObtenerCuenta.Rows(0).Item("cacta"), dtObtenerCuenta.Rows(0).Item("cadesc"), DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, Escuela, 0) '''' Aqui agrego al padre
+                        End If
+
                         tabla.ImportRow(dtCuentasBancos.Rows(j))
                         dtPagos = L_prObtenerPagosTotalesCuentaByBanco(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"), dtCuentasBancos.Rows(j).Item("canumi"))
 
@@ -982,7 +1194,10 @@ Public Class F1_AsientosContables
             Dim numicuentaatc As Integer = 21 'ATC
 
             If (dtPagos.Rows.Count > 0) Then
-
+                numiCuenta = dt.Rows(i).Item("canumi")
+                Dim dtObtenerCuenta As DataTable = L_prCuentaDiferencia(numiCuenta)
+                tabla.Rows.Add(dtObtenerCuenta.Rows(0).Item("canumi"), dtObtenerCuenta.Rows(0).Item("cacta"), dtObtenerCuenta.Rows(0).Item("cadesc"), DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, DBNull.Value, Escuela, 0) '''' Aqui agrego al padre
+                tabla.ImportRow(dt.Rows(i))  '''Aqui agrego al hijo
                 For k As Integer = 0 To dtPagos.Rows.Count - 1 Step 1
                     Dim Glosa As String = dt.Rows(i).Item("cadesc")
 
@@ -1360,9 +1575,24 @@ Public Class F1_AsientosContables
         Dim dt As DataTable = L_prObtenerPlantila(cbSucursal.Value)
         Dim tipo As Integer = dt.Rows(0).Item("Tipo")
         Dim factura As Integer = dt.Rows(0).Item("Factura")
+        Dim TipoTransacion As Integer = 0
+
+        If (cbSucursal.Value = 1 Or cbSucursal.Value = 2 Or cbSucursal.Value = 1004) Then ''' Si es compra o es asiento contable de cuentas por cobrar
+            TipoTransacion = 3   ''''se asigna 3= traspaso
+
+        Else
+            If (cbSucursal.Value = 3) Then  '''' si es ventas al contado o credito
+                TipoTransacion = 1 ''' se asigna 1=ingreso
+
+            Else ''' si no es ninguna de las demas y entonces es pagos de credito es un egreso
+
+                TipoTransacion = 2  '''' se asigna 2= egreso
+            End If
+
+        End If
 
         Dim res As Boolean = L_prComprobanteGrabarIntegracion(numiComprobante, "", 1, tbFechaI.Value.Year.ToString, tbFechaI.Value.Month.ToString, "", tbFechaI.Value.Date.ToString("yyyy/MM/dd"), tbTipoCambio.Value.ToString, "", "", gi_empresaNumi, dtDetalle, dtDetalle2, "", 0, tbTipoCambio.Value, tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), 1, _LisTransacciones, cbSucursal.Value,
-                                                              tipo, factura, tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"))
+                                                              tipo, factura, tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), TipoTransacion)
         If res Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "El Asiento Contable fue generado Exitosamente".ToUpper,
@@ -1530,8 +1760,12 @@ Public Class F1_AsientosContables
                 _prArmarAsientoCuentasPorCobrar()
 
             Else
+                If (cbSucursal.Value = 1005) Then
+                    _prCargarTablaComprobantesRetencion()
+                Else
+                    _prCargarTablaComprobantes()
+                End If
 
-                _prCargarTablaComprobantes()
             End If
         End If
 
