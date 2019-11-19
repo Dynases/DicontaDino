@@ -1577,7 +1577,7 @@ Public Class F1_AsientosContables
         Dim factura As Integer = dt.Rows(0).Item("Factura")
         Dim TipoTransacion As Integer = 0
 
-        If (cbSucursal.Value = 1 Or cbSucursal.Value = 2 Or cbSucursal.Value = 1004) Then ''' Si es compra o es asiento contable de cuentas por cobrar
+        If (cbSucursal.Value = 1 Or cbSucursal.Value = 2 Or cbSucursal.Value = 1004 Or cbSucursal.Value = 1005) Then ''' Si es compra o es asiento contable de cuentas por cobrar
             TipoTransacion = 3   ''''se asigna 3= traspaso
 
         Else
