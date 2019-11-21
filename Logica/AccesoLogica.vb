@@ -1548,7 +1548,7 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
 
     Public Shared Function L_prComprobanteGrabarIntegracion(ByRef _numi As String, _numDoc As String, _tipo As String, _anio As String, _mes As String, _num As String, _fecha As String, _tipoCambio As String, _glosa As String, _obs As String, _numiEmpresa As String, _detalle As DataTable, _detalle2 As DataTable, _ifnumi As String, _ifto001numi As Integer, _iftc As Double,
                                                             _iffechai As String, _iffechaf As String, _ifest As Integer, _dtestado As DataTable, _sucursal As Integer,
-                                                            tipo As Integer, factura As Integer, fechai As String, fechaf As String, _oaTipo As Integer) As Boolean
+                                                            tipo As Integer, factura As Integer, fechai As String, fechaf As String, _oaTipo As Integer, _dtTC009 As DataTable) As Boolean
         Dim _resultado As Boolean
 
         Dim _Tabla As DataTable
@@ -1583,6 +1583,7 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
         _listParam.Add(New Datos.DParametro("@factura", factura))
         _listParam.Add(New Datos.DParametro("@fechaI", fechai))
         _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _listParam.Add(New Datos.DParametro("@TO00111", "", _dtTC009))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TI005", _listParam)
 
         If _Tabla.Rows.Count > 0 Then
@@ -6063,6 +6064,85 @@ DBDies .dbo.TC001 .canumi =ZY003.ydsuc" + _Cadena
         _listParam.Add(New Datos.DParametro("@fechaI", fechai))
         _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
         _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_prListarProveedorCreditoParaTC009(fechai As String, fechaf As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 53))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_prListarProveedorCreditoParaTC009ParaVentas(fechai As String, fechaf As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 55))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_prListarProveedorCreditoParaTC009Recibo(fechai As String, fechaf As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 54))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+
+    Public Shared Function L_prListarProveedorCreditoParaTC009Cobros(fechai As String, fechaf As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 58))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+
+    Public Shared Function L_prListarProveedorCreditoParaTC009Pagos(fechai As String, fechaf As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 56))
+        _listParam.Add(New Datos.DParametro("@seuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaf))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Asiento", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_prInsertarTC009(_dtTC009 As DataTable) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 9))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@TC009", "", _dtTC009))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TI005", _listParam)
 
         Return _Tabla
     End Function
