@@ -54,6 +54,7 @@ Partial Class ModeloF1
         Me.btnAnterior = New DevComponents.DotNetBar.ButtonX()
         Me.btnPrimero = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior = New DevComponents.DotNetBar.PanelEx()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MRlAccion = New DevComponents.DotNetBar.Controls.ReflectionLabel()
         Me.PanelToolBar2 = New System.Windows.Forms.Panel()
         Me.btnImprimir = New DevComponents.DotNetBar.ButtonX()
@@ -69,7 +70,6 @@ Partial Class ModeloF1
         Me.MEP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.MHighlighterFocus = New DevComponents.DotNetBar.Validator.Highlighter()
         Me.MFlyoutUsuario = New DevComponents.DotNetBar.Controls.Flyout(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -83,10 +83,10 @@ Partial Class ModeloF1
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelNavegacion.SuspendLayout()
         Me.PanelSuperior.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelToolBar2.SuspendLayout()
         Me.PanelToolBar1.SuspendLayout()
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -491,6 +491,17 @@ Partial Class ModeloF1
         Me.PanelSuperior.Style.GradientAngle = 90
         Me.PanelSuperior.TabIndex = 0
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.PictureBox1.Image = Global.Modelos.My.Resources.Resources.dinases
+        Me.PictureBox1.Location = New System.Drawing.Point(477, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(264, 72)
+        Me.PictureBox1.TabIndex = 9
+        Me.PictureBox1.TabStop = False
+        '
         'MRlAccion
         '
         '
@@ -595,7 +606,7 @@ Partial Class ModeloF1
         Me.btnEliminar.Size = New System.Drawing.Size(72, 72)
         Me.btnEliminar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btnEliminar.TabIndex = 8
-        Me.btnEliminar.Text = "ELIMNAR"
+        Me.btnEliminar.Text = "ELIMINAR"
         Me.btnEliminar.TextColor = System.Drawing.Color.White
         '
         'btnModificar
@@ -670,17 +681,6 @@ Partial Class ModeloF1
         Me.MFlyoutUsuario.Parent = Me
         Me.MFlyoutUsuario.TargetControl = Me.BubbleBarUsuario
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox1.Image = Global.Modelos.My.Resources.Resources.dinases
-        Me.PictureBox1.Location = New System.Drawing.Point(477, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(264, 72)
-        Me.PictureBox1.TabIndex = 9
-        Me.PictureBox1.TabStop = False
-        '
         'ModeloF1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -706,10 +706,10 @@ Partial Class ModeloF1
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelNavegacion.ResumeLayout(False)
         Me.PanelSuperior.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelToolBar2.ResumeLayout(False)
         Me.PanelToolBar1.ResumeLayout(False)
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

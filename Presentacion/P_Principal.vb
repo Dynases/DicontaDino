@@ -24,6 +24,9 @@ Public Class P_Principal
 
     End Sub
     Private Sub _prIniciarTodo()
+        'Ocultar Módulos
+        _prOcultar()
+
         'poner numiModulos a los modulos y tambien la version
         FP_Configuracion.Tag = New Version(1, "2.4.6")
         FP_Transacciones.Tag = New Version(2, "2.5.1")
@@ -71,6 +74,11 @@ Public Class P_Principal
         'iniciar login de usuario
         _prLogin()
 
+    End Sub
+    Private Sub _prOcultar()
+        FP_Inventario.Visible = False
+        FP_Produccion.Visible = False
+        FP_Gerencia.Visible = False
     End Sub
     Private Sub _prCambiarStyle()
         'tratar de cambiar estilo

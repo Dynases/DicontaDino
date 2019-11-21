@@ -276,7 +276,9 @@ Public Class F0_Usuarios
         With JGr_Buscador.RootTable.Columns("ydsuc")
             .Visible = False
         End With
-
+        With JGr_Buscador.RootTable.Columns("ydemp")
+            .Visible = False
+        End With
         With JGr_Buscador.RootTable.Columns("ydall")
             .Visible = False
         End With
