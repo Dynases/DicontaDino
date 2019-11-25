@@ -30,7 +30,6 @@ Partial Class PR_LibroMayor
         Me.tbFiltrarRef = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.tbMeses = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.tbCliente = New System.Windows.Forms.TextBox()
@@ -42,6 +41,7 @@ Partial Class PR_LibroMayor
         Me.tbCuenta = New System.Windows.Forms.TextBox()
         Me.tbFechaAl = New System.Windows.Forms.DateTimePicker()
         Me.tbNumi = New System.Windows.Forms.TextBox()
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.gpGrilla = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.grDetalle = New Janus.Windows.GridEX.GridEX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -210,7 +210,6 @@ Partial Class PR_LibroMayor
         '
         'btnUltimo
         '
-        Me.btnUltimo.Location = New System.Drawing.Point(129, 0)
         Me.btnUltimo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         '
         'MPanelUserAct
@@ -363,26 +362,11 @@ Partial Class PR_LibroMayor
         '
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Location = New System.Drawing.Point(26, 2)
+        Me.LabelX1.Location = New System.Drawing.Point(25, 2)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.Size = New System.Drawing.Size(61, 23)
         Me.LabelX1.TabIndex = 0
         Me.LabelX1.Text = "CUENTA"
-        '
-        'LabelX6
-        '
-        Me.LabelX6.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX6.ForeColor = System.Drawing.Color.Green
-        Me.LabelX6.Location = New System.Drawing.Point(119, 8)
-        Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.Size = New System.Drawing.Size(83, 23)
-        Me.LabelX6.TabIndex = 128
-        Me.LabelX6.Text = "CTRL+ENTER"
         '
         'tbMeses
         '
@@ -406,11 +390,11 @@ Partial Class PR_LibroMayor
         '
         '
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX5.Location = New System.Drawing.Point(58, 50)
+        Me.LabelX5.Location = New System.Drawing.Point(23, 51)
         Me.LabelX5.Name = "LabelX5"
-        Me.LabelX5.Size = New System.Drawing.Size(52, 23)
+        Me.LabelX5.Size = New System.Drawing.Size(89, 23)
         Me.LabelX5.TabIndex = 127
-        Me.LabelX5.Text = "CLIENTE:"
+        Me.LabelX5.Text = "CLIENTE/PROV.:"
         '
         'tbCliente
         '
@@ -499,11 +483,26 @@ Partial Class PR_LibroMayor
         '
         'tbNumi
         '
-        Me.tbNumi.Location = New System.Drawing.Point(26, 28)
+        Me.tbNumi.Location = New System.Drawing.Point(24, 28)
         Me.tbNumi.Name = "tbNumi"
         Me.tbNumi.ReadOnly = True
         Me.tbNumi.Size = New System.Drawing.Size(84, 20)
         Me.tbNumi.TabIndex = 121
+        '
+        'LabelX6
+        '
+        Me.LabelX6.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX6.ForeColor = System.Drawing.Color.Green
+        Me.LabelX6.Location = New System.Drawing.Point(119, 8)
+        Me.LabelX6.Name = "LabelX6"
+        Me.LabelX6.Size = New System.Drawing.Size(83, 23)
+        Me.LabelX6.TabIndex = 128
+        Me.LabelX6.Text = "CTRL+ENTER"
         '
         'gpGrilla
         '

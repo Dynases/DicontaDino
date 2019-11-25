@@ -1929,6 +1929,7 @@ Public Class F1_AsientosContables
         objrep.SetParameterValue("titulo", "COMPROBANTE DE INGRESO")
         objrep.SetParameterValue("titulo2", "ECONOMARKET " + gs_empresaDesc.ToUpper)
         objrep.SetParameterValue("glosa", cbSucursal.Text)
+        objrep.SetParameterValue("Autor", gs_user)
         'cargar el numero de comprobante
         Dim dtNum As DataTable = L_prObtenerNumFacturaGeneral(1, tbFechaI.Value.Year, tbFechaI.Value.Month, 1)
         If dtNum.Rows.Count > 0 Then
@@ -2047,6 +2048,7 @@ Public Class F1_AsientosContables
     End Sub
 
     Private Sub tbFechaI_ValueChanged(sender As Object, e As EventArgs) Handles tbFechaI.ValueChanged
+        tbFechaF.Value = tbFechaI.Value
         'verifico el tipo de cambio de la fecha elegida
         Dim dtTipoCambio As DataTable = L_prTipoCambioGeneralPorFecha(tbFechaI.Value.ToString("yyyy/MM/dd"))
         If dtTipoCambio.Rows.Count = 0 Then

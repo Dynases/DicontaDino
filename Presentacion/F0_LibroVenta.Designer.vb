@@ -23,7 +23,7 @@ Partial Class F0_LibroVenta
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_LibroVenta))
-        Dim Background1 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
+        Dim Background2 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
         Dim tbTipoFactura_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim CbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.TableLayoutPanelPrincipal = New System.Windows.Forms.TableLayoutPanel()
@@ -153,10 +153,6 @@ Partial Class F0_LibroVenta
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.Panel1, 0)
         '
-        'btnUltimo
-        '
-        Me.btnUltimo.Location = New System.Drawing.Point(129, 0)
-        '
         'MRlAccion
         '
         '
@@ -199,9 +195,13 @@ Partial Class F0_LibroVenta
         Me.MSuperTabControl.Size = New System.Drawing.Size(984, 498)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         '
+        'SuperTabItemBuscador
+        '
+        Me.SuperTabItemBuscador.Visible = False
+        '
         'PanelBuscador
         '
-        Me.PanelBuscador.Size = New System.Drawing.Size(951, 450)
+        Me.PanelBuscador.Size = New System.Drawing.Size(951, 498)
         '
         'TableLayoutPanelPrincipal
         '
@@ -412,8 +412,8 @@ Partial Class F0_LibroVenta
         Me.DgdLCV.BackColor = System.Drawing.Color.WhiteSmoke
         Me.DgdLCV.DefaultVisualStyles.HeaderStyles.Default.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgdLCV.DefaultVisualStyles.HeaderStyles.Default.TextColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Background1.Color1 = System.Drawing.Color.DodgerBlue
-        Me.DgdLCV.DefaultVisualStyles.HeaderStyles.Selected.Background = Background1
+        Background2.Color1 = System.Drawing.Color.DodgerBlue
+        Me.DgdLCV.DefaultVisualStyles.HeaderStyles.Selected.Background = Background2
         Me.DgdLCV.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgdLCV.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed
         Me.DgdLCV.Location = New System.Drawing.Point(0, 0)
@@ -521,7 +521,7 @@ Partial Class F0_LibroVenta
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.LabelX3.Location = New System.Drawing.Point(310, 6)
+        Me.LabelX3.Location = New System.Drawing.Point(315, 7)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.Size = New System.Drawing.Size(20, 16)
         Me.LabelX3.TabIndex = 35
@@ -585,7 +585,7 @@ Partial Class F0_LibroVenta
         Me.tbFechaI.ButtonDropDown.Visible = True
         Me.tbFechaI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaI.IsPopupCalendarOpen = False
-        Me.tbFechaI.Location = New System.Drawing.Point(166, 5)
+        Me.tbFechaI.Location = New System.Drawing.Point(192, 4)
         '
         '
         '
@@ -628,7 +628,7 @@ Partial Class F0_LibroVenta
         Me.LabelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX15.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.LabelX15.Location = New System.Drawing.Point(39, 59)
+        Me.LabelX15.Location = New System.Drawing.Point(39, 60)
         Me.LabelX15.Name = "LabelX15"
         Me.LabelX15.Size = New System.Drawing.Size(120, 23)
         Me.LabelX15.TabIndex = 31
@@ -673,7 +673,7 @@ Partial Class F0_LibroVenta
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(3, 3)
+        Me.LabelX1.Location = New System.Drawing.Point(54, 3)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.Size = New System.Drawing.Size(75, 23)
         Me.LabelX1.TabIndex = 0
@@ -688,11 +688,12 @@ Partial Class F0_LibroVenta
         Me.Tb1CodRazonSocial.Border.Class = "TextBoxBorder"
         Me.Tb1CodRazonSocial.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.Tb1CodRazonSocial.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Tb1CodRazonSocial.Location = New System.Drawing.Point(468, 32)
+        Me.Tb1CodRazonSocial.Location = New System.Drawing.Point(469, 32)
         Me.Tb1CodRazonSocial.Name = "Tb1CodRazonSocial"
         Me.Tb1CodRazonSocial.PreventEnterBeep = True
         Me.Tb1CodRazonSocial.Size = New System.Drawing.Size(60, 22)
         Me.Tb1CodRazonSocial.TabIndex = 12
+        Me.Tb1CodRazonSocial.Visible = False
         '
         'LabelX2
         '
@@ -702,9 +703,9 @@ Partial Class F0_LibroVenta
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.LabelX2.Location = New System.Drawing.Point(84, 3)
+        Me.LabelX2.Location = New System.Drawing.Point(158, 3)
         Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX2.Size = New System.Drawing.Size(30, 23)
         Me.LabelX2.TabIndex = 2
         Me.LabelX2.Text = "Del:"
         Me.LabelX2.TextAlignment = System.Drawing.StringAlignment.Far
@@ -759,9 +760,9 @@ Partial Class F0_LibroVenta
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.LabelX5.Location = New System.Drawing.Point(499, 32)
+        Me.LabelX5.Location = New System.Drawing.Point(528, 32)
         Me.LabelX5.Name = "LabelX5"
-        Me.LabelX5.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX5.Size = New System.Drawing.Size(45, 23)
         Me.LabelX5.TabIndex = 8
         Me.LabelX5.Text = "NIT:"
         Me.LabelX5.TextAlignment = System.Drawing.StringAlignment.Far

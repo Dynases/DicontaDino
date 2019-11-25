@@ -128,13 +128,13 @@ Public Class PR_BalanceGeneral
         _prCargarReporte()
     End Sub
 
-    Private Sub SwitchButton1_ValueChanged(sender As Object, e As EventArgs) Handles tbFiltrar.ValueChanged
+    Private Sub SwitchButton1_ValueChanged(sender As Object, e As EventArgs)
         'tbAuxiliar.Enabled = tbFiltrar.Value
         tbVariable.Enabled = tbFiltrar.Value
 
     End Sub
 
-    Private Sub tbFiltrarSucursal_ValueChanged(sender As Object, e As EventArgs) Handles tbFiltrarSucursal.ValueChanged
+    Private Sub tbFiltrarSucursal_ValueChanged(sender As Object, e As EventArgs)
         tbVariableSucursal.Enabled = tbFiltrarSucursal.Value
 
     End Sub

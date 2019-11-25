@@ -342,7 +342,7 @@ Public Class F0_Usuarios
         JMC_Categoria.Value = Nothing
         JMC_Categoria.SelectedIndex = -1
         Tb_Estado.Value = True
-        tbTodasSucursales.Value = False
+        tbTodasSucursales.Value = True
         Tb_DiasPedidos.Value = 0
         Tb_fuenteTam.Value = 7
         If (CType(cbEmp.DataSource, DataTable).Rows.Count > 0) Then

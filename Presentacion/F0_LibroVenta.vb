@@ -77,7 +77,7 @@ Public Class F0_LibroVenta
             .DataSource = dt
             .Refresh()
 
-            .SelectedIndex = 0
+            .SelectedIndex = 1
         End With
 
     End Sub
@@ -86,7 +86,7 @@ Public Class F0_LibroVenta
         Dim dt As New DataTable
         dt = L_fnListarAlmacenQueTenganDosificacion()
         dt.Rows.Add(0, "TODOS")
-        dt.Rows.Add(-1, "TODOS MENOS LA PRINCIPAL")
+        'dt.Rows.Add(-1, "TODOS MENOS LA PRINCIPAL")
         With mCombo
             .DropDownList.Columns.Clear()
             .DropDownList.Columns.Add("cod").Width = 60
@@ -444,6 +444,9 @@ Public Class F0_LibroVenta
         objrep.SetParameterValue("RazonSocial", Cb3RazonSocial.Text)
         objrep.SetParameterValue("Nit", Tb2NitRazonSocial.Text)
 
+        objrep.SetParameterValue("ci", dtTitulos.Rows(0).Item("yedesc").ToString)
+        objrep.SetParameterValue("nombre", dtTitulos.Rows(1).Item("yedesc").ToString)
+
         'objrep.SetParameterValue("empresaDesc", gs_empresaDescSistema)
         objrep.SetParameterValue("empresaDesc", "ECONOMARKET " + gs_empresaDesc.ToUpper)
         'gs_empresaDireccion
@@ -462,8 +465,8 @@ Public Class F0_LibroVenta
                     encargado = elems(1)
                 End If
             End If
-            objrep.SetParameterValue("ci", ci)
-            objrep.SetParameterValue("nombre", encargado)
+            'objrep.SetParameterValue("ci", ci)
+            'objrep.SetParameterValue("nombre", encargado)
         Else 'carburantes
             objrep.SetParameterValue("ci", dtTitulos.Rows(0).Item("yedesc").ToString)
             objrep.SetParameterValue("nombre", dtTitulos.Rows(1).Item("yedesc").ToString)

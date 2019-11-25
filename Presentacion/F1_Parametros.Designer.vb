@@ -203,6 +203,9 @@ Partial Class F1_Parametros
         'btnSalir
         '
         '
+        'btnGrabar
+        '
+        '
         'btnModificar
         '
         '
@@ -937,7 +940,7 @@ Partial Class F1_Parametros
         Me.ToolStripMenuItem2.Image = Global.Presentacion.My.Resources.Resources.elim_fila2
         Me.ToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(165, 36)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(140, 36)
         Me.ToolStripMenuItem2.Text = "ELIMINAR"
         '
         'TableLayoutPanel2
@@ -955,6 +958,7 @@ Partial Class F1_Parametros
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(562, 133)
         Me.TableLayoutPanel2.TabIndex = 144
+        Me.TableLayoutPanel2.Visible = False
         '
         'GroupPanel6
         '
@@ -1066,7 +1070,7 @@ Partial Class F1_Parametros
         Me.ToolStripMenuItem3.Image = Global.Presentacion.My.Resources.Resources.elim_fila2
         Me.ToolStripMenuItem3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(165, 36)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(140, 36)
         Me.ToolStripMenuItem3.Text = "ELIMINAR"
         '
         'ContextMenuEgreso
@@ -1074,14 +1078,14 @@ Partial Class F1_Parametros
         Me.ContextMenuEgreso.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ContextMenuEgreso.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem4})
         Me.ContextMenuEgreso.Name = "ContextMenuStrip1"
-        Me.ContextMenuEgreso.Size = New System.Drawing.Size(166, 62)
+        Me.ContextMenuEgreso.Size = New System.Drawing.Size(141, 40)
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Image = Global.Presentacion.My.Resources.Resources.elim_fila2
         Me.ToolStripMenuItem4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(165, 36)
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(140, 36)
         Me.ToolStripMenuItem4.Text = "ELIMINAR"
         '
         'F1_Parametros

@@ -30,6 +30,9 @@ Partial Class PR_BalanceGeneral
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaAl = New System.Windows.Forms.DateTimePicker()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.GroupPanel3 = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
+        Me.tbPeriodo = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.tbVariable = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
@@ -38,9 +41,6 @@ Partial Class PR_BalanceGeneral
         Me.tbVariableSucursal = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFiltrarSucursal = New DevComponents.DotNetBar.Controls.SwitchButton()
-        Me.GroupPanel3 = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
-        Me.tbPeriodo = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.PanelPrincipal.SuspendLayout()
         Me.PanelUsuario.SuspendLayout()
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,11 +52,11 @@ Partial Class PR_BalanceGeneral
         Me.GroupPanelFiltros.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.GroupPanel3.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
         CType(Me.tbVariable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         CType(Me.tbVariableSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupPanel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelPrincipal
@@ -176,9 +176,9 @@ Partial Class PR_BalanceGeneral
         '
         'GroupPanelFiltros
         '
-        Me.GroupPanelFiltros.Controls.Add(Me.GroupPanel3)
         Me.GroupPanelFiltros.Controls.Add(Me.GroupPanel2)
         Me.GroupPanelFiltros.Controls.Add(Me.GroupPanel1)
+        Me.GroupPanelFiltros.Controls.Add(Me.GroupPanel3)
         Me.GroupPanelFiltros.Controls.Add(Me.Panel2)
         Me.GroupPanelFiltros.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupPanelFiltros.Size = New System.Drawing.Size(261, 485)
@@ -274,178 +274,6 @@ Partial Class PR_BalanceGeneral
         Me.Panel2.Size = New System.Drawing.Size(255, 75)
         Me.Panel2.TabIndex = 120
         '
-        'GroupPanel1
-        '
-        Me.GroupPanel1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
-        Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GroupPanel1.Controls.Add(Me.tbVariable)
-        Me.GroupPanel1.Controls.Add(Me.LabelX2)
-        Me.GroupPanel1.Controls.Add(Me.tbFiltrar)
-        Me.GroupPanel1.DisabledBackColor = System.Drawing.Color.Empty
-        Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupPanel1.Location = New System.Drawing.Point(0, 75)
-        Me.GroupPanel1.Margin = New System.Windows.Forms.Padding(2)
-        Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(255, 97)
-        '
-        '
-        '
-        Me.GroupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.GroupPanel1.Style.BackColorGradientAngle = 90
-        Me.GroupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.GroupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel1.Style.BorderBottomWidth = 1
-        Me.GroupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.GroupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel1.Style.BorderLeftWidth = 1
-        Me.GroupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel1.Style.BorderRightWidth = 1
-        Me.GroupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel1.Style.BorderTopWidth = 1
-        Me.GroupPanel1.Style.CornerDiameter = 4
-        Me.GroupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.GroupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.GroupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
-        '
-        '
-        '
-        Me.GroupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanel1.TabIndex = 124
-        Me.GroupPanel1.Text = "REGIONAL"
-        '
-        'tbVariable
-        '
-        tbVariable_DesignTimeLayout.LayoutString = resources.GetString("tbVariable_DesignTimeLayout.LayoutString")
-        Me.tbVariable.DesignTimeLayout = tbVariable_DesignTimeLayout
-        Me.tbVariable.Enabled = False
-        Me.tbVariable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbVariable.Location = New System.Drawing.Point(5, 41)
-        Me.tbVariable.Name = "tbVariable"
-        Me.tbVariable.SelectedIndex = -1
-        Me.tbVariable.SelectedItem = Nothing
-        Me.tbVariable.Size = New System.Drawing.Size(225, 22)
-        Me.tbVariable.TabIndex = 122
-        '
-        'LabelX2
-        '
-        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX2.Location = New System.Drawing.Point(5, 11)
-        Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.Size = New System.Drawing.Size(61, 23)
-        Me.LabelX2.TabIndex = 118
-        Me.LabelX2.Text = "FILTRAR:"
-        '
-        'tbFiltrar
-        '
-        '
-        '
-        '
-        Me.tbFiltrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbFiltrar.Location = New System.Drawing.Point(78, 16)
-        Me.tbFiltrar.Margin = New System.Windows.Forms.Padding(2)
-        Me.tbFiltrar.Name = "tbFiltrar"
-        Me.tbFiltrar.OffText = "NO"
-        Me.tbFiltrar.OnText = "SI"
-        Me.tbFiltrar.Size = New System.Drawing.Size(68, 18)
-        Me.tbFiltrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.tbFiltrar.TabIndex = 0
-        '
-        'GroupPanel2
-        '
-        Me.GroupPanel2.BackColor = System.Drawing.Color.Transparent
-        Me.GroupPanel2.CanvasColor = System.Drawing.SystemColors.Control
-        Me.GroupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GroupPanel2.Controls.Add(Me.tbVariableSucursal)
-        Me.GroupPanel2.Controls.Add(Me.LabelX4)
-        Me.GroupPanel2.Controls.Add(Me.tbFiltrarSucursal)
-        Me.GroupPanel2.DisabledBackColor = System.Drawing.Color.Empty
-        Me.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupPanel2.Location = New System.Drawing.Point(0, 172)
-        Me.GroupPanel2.Margin = New System.Windows.Forms.Padding(2)
-        Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(255, 98)
-        '
-        '
-        '
-        Me.GroupPanel2.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.GroupPanel2.Style.BackColorGradientAngle = 90
-        Me.GroupPanel2.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.GroupPanel2.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel2.Style.BorderBottomWidth = 1
-        Me.GroupPanel2.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.GroupPanel2.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel2.Style.BorderLeftWidth = 1
-        Me.GroupPanel2.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel2.Style.BorderRightWidth = 1
-        Me.GroupPanel2.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel2.Style.BorderTopWidth = 1
-        Me.GroupPanel2.Style.CornerDiameter = 4
-        Me.GroupPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.GroupPanel2.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.GroupPanel2.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
-        '
-        '
-        '
-        Me.GroupPanel2.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.GroupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanel2.TabIndex = 125
-        Me.GroupPanel2.Text = "SUCURSALES"
-        '
-        'tbVariableSucursal
-        '
-        tbVariableSucursal_DesignTimeLayout.LayoutString = resources.GetString("tbVariableSucursal_DesignTimeLayout.LayoutString")
-        Me.tbVariableSucursal.DesignTimeLayout = tbVariableSucursal_DesignTimeLayout
-        Me.tbVariableSucursal.Enabled = False
-        Me.tbVariableSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbVariableSucursal.Location = New System.Drawing.Point(5, 41)
-        Me.tbVariableSucursal.Name = "tbVariableSucursal"
-        Me.tbVariableSucursal.SelectedIndex = -1
-        Me.tbVariableSucursal.SelectedItem = Nothing
-        Me.tbVariableSucursal.Size = New System.Drawing.Size(225, 22)
-        Me.tbVariableSucursal.TabIndex = 122
-        '
-        'LabelX4
-        '
-        Me.LabelX4.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX4.Location = New System.Drawing.Point(5, 11)
-        Me.LabelX4.Name = "LabelX4"
-        Me.LabelX4.Size = New System.Drawing.Size(61, 23)
-        Me.LabelX4.TabIndex = 118
-        Me.LabelX4.Text = "FILTRAR:"
-        '
-        'tbFiltrarSucursal
-        '
-        '
-        '
-        '
-        Me.tbFiltrarSucursal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbFiltrarSucursal.Location = New System.Drawing.Point(78, 16)
-        Me.tbFiltrarSucursal.Margin = New System.Windows.Forms.Padding(2)
-        Me.tbFiltrarSucursal.Name = "tbFiltrarSucursal"
-        Me.tbFiltrarSucursal.OffText = "NO"
-        Me.tbFiltrarSucursal.OnText = "SI"
-        Me.tbFiltrarSucursal.Size = New System.Drawing.Size(68, 18)
-        Me.tbFiltrarSucursal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.tbFiltrarSucursal.TabIndex = 0
-        '
         'GroupPanel3
         '
         Me.GroupPanel3.BackColor = System.Drawing.Color.Transparent
@@ -455,7 +283,7 @@ Partial Class PR_BalanceGeneral
         Me.GroupPanel3.Controls.Add(Me.tbPeriodo)
         Me.GroupPanel3.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupPanel3.Location = New System.Drawing.Point(0, 270)
+        Me.GroupPanel3.Location = New System.Drawing.Point(0, 75)
         Me.GroupPanel3.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanel3.Name = "GroupPanel3"
         Me.GroupPanel3.Size = New System.Drawing.Size(255, 98)
@@ -518,6 +346,180 @@ Partial Class PR_BalanceGeneral
         Me.tbPeriodo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.tbPeriodo.TabIndex = 0
         '
+        'GroupPanel1
+        '
+        Me.GroupPanel1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
+        Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GroupPanel1.Controls.Add(Me.tbVariable)
+        Me.GroupPanel1.Controls.Add(Me.LabelX2)
+        Me.GroupPanel1.Controls.Add(Me.tbFiltrar)
+        Me.GroupPanel1.DisabledBackColor = System.Drawing.Color.Empty
+        Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupPanel1.Location = New System.Drawing.Point(0, 173)
+        Me.GroupPanel1.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupPanel1.Name = "GroupPanel1"
+        Me.GroupPanel1.Size = New System.Drawing.Size(255, 97)
+        '
+        '
+        '
+        Me.GroupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.GroupPanel1.Style.BackColorGradientAngle = 90
+        Me.GroupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.GroupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel1.Style.BorderBottomWidth = 1
+        Me.GroupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.GroupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel1.Style.BorderLeftWidth = 1
+        Me.GroupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel1.Style.BorderRightWidth = 1
+        Me.GroupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel1.Style.BorderTopWidth = 1
+        Me.GroupPanel1.Style.CornerDiameter = 4
+        Me.GroupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.GroupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.GroupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.GroupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GroupPanel1.TabIndex = 127
+        Me.GroupPanel1.Text = "REGIONAL"
+        Me.GroupPanel1.Visible = False
+        '
+        'tbVariable
+        '
+        tbVariable_DesignTimeLayout.LayoutString = resources.GetString("tbVariable_DesignTimeLayout.LayoutString")
+        Me.tbVariable.DesignTimeLayout = tbVariable_DesignTimeLayout
+        Me.tbVariable.Enabled = False
+        Me.tbVariable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbVariable.Location = New System.Drawing.Point(5, 41)
+        Me.tbVariable.Name = "tbVariable"
+        Me.tbVariable.SelectedIndex = -1
+        Me.tbVariable.SelectedItem = Nothing
+        Me.tbVariable.Size = New System.Drawing.Size(225, 22)
+        Me.tbVariable.TabIndex = 122
+        '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.Location = New System.Drawing.Point(5, 11)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.Size = New System.Drawing.Size(61, 23)
+        Me.LabelX2.TabIndex = 118
+        Me.LabelX2.Text = "FILTRAR:"
+        '
+        'tbFiltrar
+        '
+        '
+        '
+        '
+        Me.tbFiltrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbFiltrar.Location = New System.Drawing.Point(78, 16)
+        Me.tbFiltrar.Margin = New System.Windows.Forms.Padding(2)
+        Me.tbFiltrar.Name = "tbFiltrar"
+        Me.tbFiltrar.OffText = "NO"
+        Me.tbFiltrar.OnText = "SI"
+        Me.tbFiltrar.Size = New System.Drawing.Size(68, 18)
+        Me.tbFiltrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.tbFiltrar.TabIndex = 0
+        '
+        'GroupPanel2
+        '
+        Me.GroupPanel2.BackColor = System.Drawing.Color.Transparent
+        Me.GroupPanel2.CanvasColor = System.Drawing.SystemColors.Control
+        Me.GroupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GroupPanel2.Controls.Add(Me.tbVariableSucursal)
+        Me.GroupPanel2.Controls.Add(Me.LabelX4)
+        Me.GroupPanel2.Controls.Add(Me.tbFiltrarSucursal)
+        Me.GroupPanel2.DisabledBackColor = System.Drawing.Color.Empty
+        Me.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupPanel2.Location = New System.Drawing.Point(0, 270)
+        Me.GroupPanel2.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupPanel2.Name = "GroupPanel2"
+        Me.GroupPanel2.Size = New System.Drawing.Size(255, 98)
+        '
+        '
+        '
+        Me.GroupPanel2.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.GroupPanel2.Style.BackColorGradientAngle = 90
+        Me.GroupPanel2.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.GroupPanel2.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel2.Style.BorderBottomWidth = 1
+        Me.GroupPanel2.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.GroupPanel2.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel2.Style.BorderLeftWidth = 1
+        Me.GroupPanel2.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel2.Style.BorderRightWidth = 1
+        Me.GroupPanel2.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel2.Style.BorderTopWidth = 1
+        Me.GroupPanel2.Style.CornerDiameter = 4
+        Me.GroupPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.GroupPanel2.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.GroupPanel2.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.GroupPanel2.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.GroupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GroupPanel2.TabIndex = 128
+        Me.GroupPanel2.Text = "SUCURSALES"
+        Me.GroupPanel2.Visible = False
+        '
+        'tbVariableSucursal
+        '
+        tbVariableSucursal_DesignTimeLayout.LayoutString = resources.GetString("tbVariableSucursal_DesignTimeLayout.LayoutString")
+        Me.tbVariableSucursal.DesignTimeLayout = tbVariableSucursal_DesignTimeLayout
+        Me.tbVariableSucursal.Enabled = False
+        Me.tbVariableSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbVariableSucursal.Location = New System.Drawing.Point(5, 41)
+        Me.tbVariableSucursal.Name = "tbVariableSucursal"
+        Me.tbVariableSucursal.SelectedIndex = -1
+        Me.tbVariableSucursal.SelectedItem = Nothing
+        Me.tbVariableSucursal.Size = New System.Drawing.Size(225, 22)
+        Me.tbVariableSucursal.TabIndex = 122
+        '
+        'LabelX4
+        '
+        Me.LabelX4.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX4.Location = New System.Drawing.Point(5, 11)
+        Me.LabelX4.Name = "LabelX4"
+        Me.LabelX4.Size = New System.Drawing.Size(61, 23)
+        Me.LabelX4.TabIndex = 118
+        Me.LabelX4.Text = "FILTRAR:"
+        '
+        'tbFiltrarSucursal
+        '
+        '
+        '
+        '
+        Me.tbFiltrarSucursal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbFiltrarSucursal.Location = New System.Drawing.Point(78, 16)
+        Me.tbFiltrarSucursal.Margin = New System.Windows.Forms.Padding(2)
+        Me.tbFiltrarSucursal.Name = "tbFiltrarSucursal"
+        Me.tbFiltrarSucursal.OffText = "NO"
+        Me.tbFiltrarSucursal.OnText = "SI"
+        Me.tbFiltrarSucursal.Size = New System.Drawing.Size(68, 18)
+        Me.tbFiltrarSucursal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.tbFiltrarSucursal.TabIndex = 0
+        '
         'PR_BalanceGeneral
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -541,13 +543,13 @@ Partial Class PR_BalanceGeneral
         Me.GroupPanelFiltros.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
+        Me.GroupPanel3.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
         Me.GroupPanel1.PerformLayout()
         CType(Me.tbVariable, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel2.ResumeLayout(False)
         Me.GroupPanel2.PerformLayout()
         CType(Me.tbVariableSucursal, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupPanel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -557,15 +559,15 @@ Partial Class PR_BalanceGeneral
     Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbFechaDel As DateTimePicker
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
-    Friend WithEvents tbVariable As Janus.Windows.GridEX.EditControls.MultiColumnCombo
-    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbFiltrar As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents GroupPanel3 As DevComponents.DotNetBar.Controls.GroupPanel
+    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbPeriodo As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents GroupPanel2 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents tbVariableSucursal As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbFiltrarSucursal As DevComponents.DotNetBar.Controls.SwitchButton
-    Friend WithEvents GroupPanel3 As DevComponents.DotNetBar.Controls.GroupPanel
-    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbPeriodo As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
+    Friend WithEvents tbVariable As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbFiltrar As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

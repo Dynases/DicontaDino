@@ -312,6 +312,7 @@ Partial Class PR_EstadoCuentasActivoPasivo
         Me.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel1.TabIndex = 122
         Me.GroupPanel1.Text = "REGIONAL"
+        Me.GroupPanel1.Visible = False
         '
         'tbVariable
         '
@@ -398,6 +399,7 @@ Partial Class PR_EstadoCuentasActivoPasivo
         Me.GroupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel2.TabIndex = 123
         Me.GroupPanel2.Text = "SUCURSALES"
+        Me.GroupPanel2.Visible = False
         '
         'tbVariableSucursal
         '

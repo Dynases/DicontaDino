@@ -593,7 +593,7 @@ Public Class PR_LibroMayor
             Dim listEstCeldas As New List(Of Modelos.Celda)
             listEstCeldas.Add(New Modelos.Celda("canumi", False))
             listEstCeldas.Add(New Modelos.Celda("cacta", True, "codigo".ToUpper, 150))
-            listEstCeldas.Add(New Modelos.Celda("cadesc", True, "cuenta".ToUpper, 200))
+            listEstCeldas.Add(New Modelos.Celda("cadesc", True, "cuenta".ToUpper, 350))
             listEstCeldas.Add(New Modelos.Celda("camon", True, "moneda".ToUpper, 150))
             listEstCeldas.Add(New Modelos.Celda("catipo", False))
             listEstCeldas.Add(New Modelos.Celda("cndesc1", True, "tipo".ToUpper, 150))
@@ -603,6 +603,7 @@ Public Class PR_LibroMayor
 
             frmAyuda = New Modelos.ModeloAyuda(0, 0, dt, "seleccione cuenta".ToUpper, listEstCeldas)
             frmAyuda.ShowDialog()
+
 
             If frmAyuda.seleccionado = True Then
                 tbCliente.Text = ""
