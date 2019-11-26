@@ -95,7 +95,7 @@ Partial Class F1_AsientosContables
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelSuperior.Size = New System.Drawing.Size(1028, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -113,7 +113,7 @@ Partial Class F1_AsientosContables
         '
         'PanelInferior
         '
-        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelInferior.Size = New System.Drawing.Size(1028, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
@@ -149,7 +149,7 @@ Partial Class F1_AsientosContables
         '
         'TxtNombreUsu
         '
-        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(2)
         Me.TxtNombreUsu.ReadOnly = True
         Me.TxtNombreUsu.Size = New System.Drawing.Size(135, 23)
         Me.TxtNombreUsu.Text = "DEFAULT"
@@ -174,14 +174,14 @@ Partial Class F1_AsientosContables
         '
         Me.PanelToolBar2.Controls.Add(Me.btnbanco)
         Me.PanelToolBar2.Location = New System.Drawing.Point(803, 0)
-        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelToolBar2.Size = New System.Drawing.Size(225, 72)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnbanco, 0)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelPrincipal.Size = New System.Drawing.Size(1028, 561)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
@@ -192,7 +192,7 @@ Partial Class F1_AsientosContables
         '
         Me.btnImprimir.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnImprimir.Location = New System.Drawing.Point(113, 0)
-        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(2)
         Me.btnImprimir.Size = New System.Drawing.Size(112, 72)
         Me.btnImprimir.Text = "Asiento General"
         '
@@ -212,7 +212,7 @@ Partial Class F1_AsientosContables
         'MPanelUserAct
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(828, 0)
-        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(2)
         '
         'MRlAccion
         '
@@ -220,24 +220,24 @@ Partial Class F1_AsientosContables
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MRlAccion.Margin = New System.Windows.Forms.Padding(2)
         Me.MRlAccion.Size = New System.Drawing.Size(427, 72)
         '
         'PanelContent
         '
         Me.PanelContent.Controls.Add(Me.SuperTabGeneral)
         Me.PanelContent.Controls.Add(Me.Panel2)
-        Me.PanelContent.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelContent.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelContent.Size = New System.Drawing.Size(995, 450)
         '
         'Panel1
         '
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Size = New System.Drawing.Size(1028, 450)
         '
         'MSuperTabControlPanel1
         '
-        Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
         Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(995, 450)
         '
         'MSuperTabControl
@@ -255,7 +255,7 @@ Partial Class F1_AsientosContables
         Me.MSuperTabControl.ControlBox.MenuBox.Name = ""
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
-        Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(2)
         Me.MSuperTabControl.SelectedTabIndex = 1
         Me.MSuperTabControl.Size = New System.Drawing.Size(1028, 450)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
@@ -263,13 +263,13 @@ Partial Class F1_AsientosContables
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(539, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         '
         'PanelBuscador
         '
         Me.PanelBuscador.Controls.Add(Me.GroupPanel2)
-        Me.PanelBuscador.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
-        Me.PanelBuscador.Size = New System.Drawing.Size(951, 424)
+        Me.PanelBuscador.Margin = New System.Windows.Forms.Padding(3)
+        Me.PanelBuscador.Size = New System.Drawing.Size(951, 450)
         '
         'GrDatos
         '
@@ -296,7 +296,7 @@ Partial Class F1_AsientosContables
         Me.GrDatos.DisabledBackColor = System.Drawing.Color.Empty
         Me.GrDatos.Dock = System.Windows.Forms.DockStyle.Left
         Me.GrDatos.Location = New System.Drawing.Point(0, 0)
-        Me.GrDatos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GrDatos.Margin = New System.Windows.Forms.Padding(2)
         Me.GrDatos.Name = "GrDatos"
         Me.GrDatos.Size = New System.Drawing.Size(675, 228)
         '
@@ -605,7 +605,7 @@ Partial Class F1_AsientosContables
         Me.GroupPanel2.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(951, 424)
+        Me.GroupPanel2.Size = New System.Drawing.Size(951, 450)
         '
         '
         '
@@ -658,7 +658,7 @@ Partial Class F1_AsientosContables
         Me.grmovimientos.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.grmovimientos.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grmovimientos.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.grmovimientos.Size = New System.Drawing.Size(945, 401)
+        Me.grmovimientos.Size = New System.Drawing.Size(945, 427)
         Me.grmovimientos.TabIndex = 0
         Me.grmovimientos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -668,7 +668,7 @@ Partial Class F1_AsientosContables
         Me.Panel2.Controls.Add(Me.GrDatos)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(995, 228)
         Me.Panel2.TabIndex = 243
@@ -681,7 +681,7 @@ Partial Class F1_AsientosContables
         Me.GroupPanelBanco.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelBanco.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelBanco.Location = New System.Drawing.Point(675, 0)
-        Me.GroupPanelBanco.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupPanelBanco.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanelBanco.Name = "GroupPanelBanco"
         Me.GroupPanelBanco.Size = New System.Drawing.Size(320, 228)
         '
@@ -723,7 +723,7 @@ Partial Class F1_AsientosContables
         Me.grbanco.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbanco.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbanco.Location = New System.Drawing.Point(0, 0)
-        Me.grbanco.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.grbanco.Margin = New System.Windows.Forms.Padding(2)
         Me.grbanco.Name = "grbanco"
         Me.grbanco.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grbanco.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -751,7 +751,7 @@ Partial Class F1_AsientosContables
         Me.SuperTabGeneral.Controls.Add(Me.SuperTabControlPanel3)
         Me.SuperTabGeneral.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabGeneral.Location = New System.Drawing.Point(0, 228)
-        Me.SuperTabGeneral.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SuperTabGeneral.Margin = New System.Windows.Forms.Padding(2)
         Me.SuperTabGeneral.Name = "SuperTabGeneral"
         Me.SuperTabGeneral.ReorderTabsEnabled = True
         Me.SuperTabGeneral.SelectedTabFont = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold)
@@ -768,7 +768,7 @@ Partial Class F1_AsientosContables
         Me.SuperTabControlPanel2.Controls.Add(Me.grComprobante)
         Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 25)
-        Me.SuperTabControlPanel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SuperTabControlPanel2.Margin = New System.Windows.Forms.Padding(2)
         Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
         Me.SuperTabControlPanel2.Size = New System.Drawing.Size(995, 197)
         Me.SuperTabControlPanel2.TabIndex = 1
@@ -782,7 +782,7 @@ Partial Class F1_AsientosContables
         Me.grComprobante.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grComprobante.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grComprobante.Location = New System.Drawing.Point(0, 0)
-        Me.grComprobante.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.grComprobante.Margin = New System.Windows.Forms.Padding(2)
         Me.grComprobante.Name = "grComprobante"
         Me.grComprobante.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grComprobante.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -803,7 +803,7 @@ Partial Class F1_AsientosContables
         Me.SuperTabControlPanel3.Controls.Add(Me.grAsientoBanco)
         Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 24)
-        Me.SuperTabControlPanel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SuperTabControlPanel3.Margin = New System.Windows.Forms.Padding(2)
         Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
         Me.SuperTabControlPanel3.Size = New System.Drawing.Size(1000, 197)
         Me.SuperTabControlPanel3.TabIndex = 0
@@ -817,7 +817,7 @@ Partial Class F1_AsientosContables
         Me.grAsientoBanco.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grAsientoBanco.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grAsientoBanco.Location = New System.Drawing.Point(0, 0)
-        Me.grAsientoBanco.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.grAsientoBanco.Margin = New System.Windows.Forms.Padding(2)
         Me.grAsientoBanco.Name = "grAsientoBanco"
         Me.grAsientoBanco.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grAsientoBanco.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -857,7 +857,7 @@ Partial Class F1_AsientosContables
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1028, 561)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "F1_AsientosContables"
         Me.Text = "F1_AsientosContables"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)

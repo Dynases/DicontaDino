@@ -1990,6 +1990,8 @@ Public Class F1_AsientosContables
         objrep.SetParameterValue("titulo", "ECONOMARKET " + gs_empresaDesc.ToUpper)
         objrep.SetParameterValue("nit", gs_empresaNit.ToUpper)
         objrep.SetParameterValue("ultimoRegistro", 0)
+        objrep.SetParameterValue("fecha", tbFechaI.Value.ToString("dd/MM/yyyy"))
+        objrep.SetParameterValue("Autor", gs_user)
 
         P_Global.Visualizador.CRV1.ReportSource = objrep 'Comentar
         P_Global.Visualizador.Show() 'Comentar
